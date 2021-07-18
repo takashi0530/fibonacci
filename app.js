@@ -1,1 +1,36 @@
 'use strict';
+
+
+// アルゴリズム改善後 Map使用
+const memo = new Map();
+memo.set(0, 0);
+memo.set(1,1);
+function fib(n) {
+    if (memo.has(n)) {
+        return memo.get(n);
+    }
+    const value = fib(n - 1) + fib(n - 2);
+    memo.set(n, value);
+    return value;
+}
+
+
+
+
+// アルゴリズム改善前
+// function fib(n) {
+//     if (n === 0) {
+//         return 0;
+//     }
+//     if (n === 1) {
+//         return 1;
+//     }
+//     return fib(n - 1) + fib(n - 2);
+// }
+
+
+// 共通
+const length = 40;
+for (let i = 0; i <= length; i++) {
+    console.log(fib(i));
+}
